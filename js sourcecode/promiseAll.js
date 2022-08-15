@@ -3,8 +3,8 @@ Promise.all = function (iterator) {
     let len = iterator.length
     let res = []//用于存放结果
     return new Promise((resolve,reject) => {
-        for(let i in iterator){
-            Promise.resolve(iterator[i])//先转化为Promise对象
+        for(let fn in iterator){
+            Promise.resolve(fn)//先转化为Promise对象
             .then((data) => {
                 // res[i] = {status: 'fufilled', data}
                 //resolve[res]
@@ -30,3 +30,21 @@ var promise3 = 42;
 Promise.all([promise1, promise2, promise3]).then(function(values) {
   console.log(values);
 });
+
+Promise.all = function(iterator){
+    let count = 0
+    const arr = []
+    return new Promise((resolve, reject)=>{
+        for(let fn of iterator){
+            Promise.resolve(fn).then((res)=>{
+                arr.push(res)
+                count++
+                if(count === iterator.length){
+                    resolve(arr)
+                }
+            }).catch((e)=>{
+                reject(e)
+            })
+        }
+    })
+}

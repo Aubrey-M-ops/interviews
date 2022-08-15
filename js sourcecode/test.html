@@ -1,12 +1,40 @@
-<div class="container">
-    <div style="height: 100px"></div>
-    <div style="min-height: 10px"></div>
-</div>
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三栏布局</title>
+</head>
+<style type="text/css">
+    html*{
+        margin: 0;
+        padding: 0;
+    }
     .container{
         display: flex;
     }
-    .container > div {
-        width: 100px;
+    .left{
+        background-color: aqua;
+        width: 300px;
+        height: 100px;
+    }
+    .center{
+        height: 100px;
+        flex: 1;
+        background: #f296ff;
+    }
+    .right{
+        height: 100px;
+        background-color: #6ee28d;
+        width: 300px;
     }
 </style>
+<body>
+<!-- 已知高度，写出三栏布局，左右宽度300px，中间自适应-->
+<div class="container">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+</div>
+</body>
+
+</html>

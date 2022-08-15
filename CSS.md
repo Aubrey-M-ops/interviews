@@ -85,7 +85,11 @@ opacity:0
 
 计算BFC高度时，浮动元素也算在内
 
+### 应用
 
+1. 防止margin重叠
+2. 清除内部浮动
+3. 自适应多栏布局（BFC 不会与浮动元素重叠，比如asider浮动到最左）
 
 ## CSS优化
 
@@ -228,9 +232,19 @@ fontSize = 屏幕宽度 / 设计稿宽度 * 基本宽度(100px)
 
 圣杯布局和双飞翼布局
 
+### 两栏布局
 
+- 左边float：left
+  - 右边margin-left左边那么多，父级元素BFC
+  - 右边BFC（overflow:hidden),左右就不重叠了
+- Flex
 
+### 三栏布局
 
+- 两边float,中间分别margin左右那么宽（主体内容最后加载）
+- 两边absolute，中间margin（两边脱离文档流）
+- flex
+- grid(`grid-template-columns: 300px auto 300px`)
 
 ## 清除浮动
 
